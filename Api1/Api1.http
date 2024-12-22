@@ -1,6 +1,53 @@
 @Api1_HostAddress = http://localhost:5195
 
-GET {{Api1_HostAddress}}/weatherforecast/
+### 查看所有活動
+GET {{Api1_HostAddress}}/activities
 Accept: application/json
 
-###
+### 查看單一活動的詳細資訊
+GET {{Api1_HostAddress}}/activities/1
+Accept: application/json
+
+### 新增活動
+POST {{Api1_HostAddress}}/activities
+Content-Type: application/json
+
+{
+  "name": "新活動",
+  "exhibitionDate": "2023-12-01T00:00:00",
+  "saleStartDate": "2023-11-01T00:00:00",
+  "endDate": "2023-12-31T00:00:00",
+  "description": "這是一個新活動",
+  "sessions": [
+    {
+      "date": "2023-12-01T10:00:00",
+      "location": "會場A"
+    }
+  ]
+}
+
+### 編輯活動
+PUT {{Api1_HostAddress}}/activities/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "更新後的活動",
+  "exhibitionDate": "2023-12-01T00:00:00",
+  "saleStartDate": "2023-11-01T00:00:00",
+  "endDate": "2023-12-31T00:00:00",
+  "description": "這是更新後的活動描述",
+  "sessions": [
+    {
+      "id": 1,
+      "date": "2023-12-01T10:00:00",
+      "location": "會場A"
+    }
+  ]
+}
+
+### 刪除活動
+DELETE {{Api1_HostAddress}}/activities/2
+
+### 刪除活動內的場次
+DELETE {{Api1_HostAddress}}/activities/1/sessions/1

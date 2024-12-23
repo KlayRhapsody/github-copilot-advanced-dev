@@ -1,5 +1,6 @@
 #nullable disable
 using Api1.Controllers;
+using Api1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -48,7 +49,7 @@ public class WeatherForecastControllerTest
     public void Post_AddsNewWeatherForecast()
     {
         // Arrange
-        var newForecast = new WeatherForecast
+        var newForecast = new WeatherForecastDto
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(6)),
             TemperatureC = 25,

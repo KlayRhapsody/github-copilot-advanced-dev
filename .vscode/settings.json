@@ -1,7 +1,20 @@
 {
+    "github.copilot.chat.codeGeneration.instructions": [
+      {
+        "file": ".github/copilot-instructions.md"
+      },
+      {
+        "language": "typescipt",
+        "text": "如果在 .ts 檔案的最後一行沒有我是 typescript 這行註解則請加上"
+      },
+      {
+        "language": "csharp",
+        "text": "如果在 .cs 檔案的最後一行沒有我是 csharp 這行註解則請加上"
+      }
+    ],
     "github.copilot.chat.commitMessageGeneration.instructions": [
       {
-        "file": "ConventionalCommits.md"
+        "file": ".github/conventional-commits.md"
       }
     ],
 }

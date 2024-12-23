@@ -1,3 +1,4 @@
+using Api1.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api1.Controllers;
@@ -27,14 +28,25 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    public IEnumerable<WeatherForecastDto> Get()
     {
-        return Forecasts;
+        return Forecasts.Select(f => new WeatherForecastDto
+        {
+            Date = f.Date,
+            TemperatureC = f.TemperatureC,
+            Summary = f.Summary
+        });
     }
 
     [HttpPost(Name = "PostWeatherForecast")]
-    public IActionResult Post(WeatherForecast forecast)
+    public IActionResult Post(WeatherForecastDto forecastDto)
     {
+        var forecast = new WeatherForecast
+        {
+            Date = forecastDto.Date,
+            TemperatureC = forecastDto.TemperatureC,
+            Summary = forecastDto.Summary
+        };
         Forecasts.Add(forecast);
         return Ok();
     }

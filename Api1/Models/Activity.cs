@@ -1,16 +1,28 @@
-using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace Api1.Models
+namespace Api1.Models;
+
+public class Activity
 {
-    public class Activity
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public DateTime ExhibitionDate { get; set; }
-        public DateTime SaleStartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public string Description { get; set; }
-        public List<Session> Sessions { get; set; }
-    }
+    [Required]
+    public int Id { get; set; }
+
+    [Required]
+    [StringLength(100)]
+    public string Name { get; set; }
+
+    [Required]
+    public DateTime ExhibitionDate { get; set; }
+
+    [Required]
+    public DateTime SaleStartDate { get; set; }
+
+    [Required]
+    public DateTime EndDate { get; set; }
+
+    [StringLength(500)]
+    public string Description { get; set; }
+
+    [Required]
+    public List<Session> Sessions { get; set; } = new List<Session>();
 }

@@ -1,11 +1,16 @@
-using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace Api1.Models
+namespace Api1.Models;
+
+public class Session
 {
-    public class Session
-    {
-        public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public string Location { get; set; }
-    }
+    [Required]
+    public int Id { get; set; }
+
+    [Required]
+    public DateTime Date { get; set; }
+
+    [Required]
+    [StringLength(200)]
+    public string Location { get; set; } = string.Empty;
 }
